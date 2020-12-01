@@ -1,8 +1,7 @@
 console.log('====== task-03 ======');
 
 const adminPassword = 'qwe123';
-let message;
-message = prompt('task-03: Введите пароль');
+let message = prompt('task-03: Введите пароль');
 
 // if (message === null) {
 //   message = 'Отменено пользователем!';
