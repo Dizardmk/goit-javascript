@@ -1,5 +1,15 @@
 console.log('====== task-02 ======');
 
+const total = 100;
+const ordered = 50;
+const result =
+  total >= ordered
+    ? 'Заказ оформлен, с вами свяжется менеджер'
+    : 'На складе недостаточно товаров!';
+console.log(`Количество товаров на складе (total): ${total}`);
+console.log(`Единиц товара в заказе (ordered): ${ordered}`);
+console.log(result);
+
 // const total = 100;
 // const ordered = 50;
 //
@@ -14,11 +24,3 @@ console.log('====== task-02 ======');
 // } else {
 //   console.log('На складе недостаточно товаров!');
 // }
-
-const total = 100;
-const ordered = 50;
-const result =
-  total >= ordered
-    ? 'Заказ оформлен, с вами свяжется менеджер'
-    : 'На складе недостаточно товаров!';
-console.log(result);
