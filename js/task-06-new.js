@@ -4,7 +4,7 @@ while (true) {
   let input = prompt("Введите число");
 
   if (!input) {
-    console.log("Отменено пользователем");
+    alert("Отменено пользователем");
     break;
   }
 
