@@ -1,3 +1,5 @@
+console.log('====== task-04 ======');
+
 const countTotalSalary = function (employees) {
   let total = 0;
   for (const value in employees) {
