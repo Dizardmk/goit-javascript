@@ -1,21 +1,23 @@
-console.log("====== task-04 ======");
-
-const maxLenthString = 40;
-
-const formatString = function (string) {
-  return string.length > maxLenthString
-    ? string.slice(0, maxLenthString) + "..."
-    : string;
+const countTotalSalary = function (employees) {
+  let total = 0;
+  for (const value in employees) {
+    total += employees[value];
+  }
+  return total;
 };
-console.log(formatString("Curabitur ligula sapien, tincidunt non."));
-// вернется оригинальная строка
-console.log(formatString("Vestibulum facilisis, purus nec pulvinar iaculis."));
-// вернется форматированная строка
-console.log(formatString("Curabitur ligula sapien."));
-// вернется оригинальная строка
+
+console.log(countTotalSalary({})); // 0
 console.log(
-  formatString(
-    "Nunc sed turpis. Curabitur a felis in nunc fringilla tristique."
-  )
-);
-// вернется форматированная строка
+  countTotalSalary({
+    mango: 100,
+    poly: 150,
+    alfred: 80,
+  }),
+); // 330
+console.log(
+  countTotalSalary({
+    kiwi: 200,
+    lux: 50,
+    chelsy: 150,
+  }),
+); // 400

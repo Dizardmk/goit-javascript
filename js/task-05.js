@@ -1,10 +1,20 @@
-console.log("====== task-05 ======");
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Сканер', price: 2700, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-const checkForSpam = function (message) {
-  const findWord = message.toLowerCase();
-  return findWord.includes("spam") || findWord.includes("sale");
+const getAllPropValues = function (arr, prop) {
+  const propValues = [];
+  for (const product of products) {
+    if (product[prop] !== undefined) {
+      propValues.push(product[prop]);
+    }
+  }
+  return propValues;
 };
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+
+console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроид', 'Захват']
+console.log(getAllPropValues(products, 'quantity')); // [4, 3, 7, 2]
+console.log(getAllPropValues(products, 'category')); // []

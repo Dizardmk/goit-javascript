@@ -1,23 +1,19 @@
-console.log("====== task-06 ======");
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Сканер', price: 2700, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-let input;
-const numbers = [];
-let total = 0;
-
-while (true) {
-  input = prompt("Введите число");
-
-  if (isNaN(input)) {
-    alert("Было введено не число, попробуйте еще раз");
-  } else if (!input) {
-    console.log("Вы нажали Cancel");
-    break;
-  } else {
-    numbers.push(Number(input));
+const calculateTotalPrice = function (allProdcuts, productName) {
+  let totalPrice;
+  for (const product of products) {
+    if (productName === product.name) {
+      totalPrice = product.price * product.quantity;
+    }
   }
-}
+  return totalPrice;
+};
 
-for (const number of numbers) {
-  total += number;
-}
-alert(`Получился массив [${numbers}]. Общая сумма чисел равна ${total}.`);
+console.log(calculateTotalPrice(products, 'Радар')); // 5200
+console.log(calculateTotalPrice(products, 'Дроид')); // 2800
