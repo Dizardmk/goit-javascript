@@ -1,18 +1,17 @@
 console.log('====== task-01 ======');
 
-const user = {
-  name: 'Mango',
-  age: 20,
-  hobby: 'html',
-  premium: true,
+const Account = function (login, email) {
+  this.login = login;
+  this.email = email;
 };
 
-user.mood = 'happy';
-user.hobby = 'skydiving';
-user.premium = false;
+Account.prototype.getInfo = function () {
+  console.log(`Login: ${this.login}, Email: ${this.email}`);
+};
+console.log(Account.prototype.getInfo); // function
 
-const keys = Object.keys(user);
+const mango = new Account('Mangozedog', 'mango@dog.woof');
+mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
 
-for (const key of keys) {
-  console.log(`${key}: ${user[key]}`);
-}
+const poly = new Account('Poly', 'poly@mail.com');
+poly.getInfo(); // Login: Poly, Email: poly@mail.com

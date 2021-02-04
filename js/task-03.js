@@ -1,41 +1,35 @@
 console.log('====== task-03 ======');
 
-const findBestEmployee = function (employees) {
-  let nameEmployee;
-  let statsEmployee = 0;
-
-  for (const key in employees) {
-    if (statsEmployee < employees[key]) {
-      statsEmployee = employees[key];
-      nameEmployee = key;
-    }
+class Storage {
+  constructor(items) {
+    this.items = items;
   }
 
-  return nameEmployee;
-};
+  getItems() {
+    return this.items;
+  }
+  addItem(item) {
+    if (this.items.includes(item)) return;
+    this.items.push(item);
+  }
+  removeItem(item) {
+    const index = items.indexOf(item);
+    items.splice(index, 1);
+  }
+}
 
-console.log(
-  findBestEmployee({
-    ann: 29,
-    david: 35,
-    helen: 1,
-    lorence: 99,
-  }),
-); // lorence
+const storage = new Storage([
+  'Нанитоиды',
+  'Пролонгер',
+  'Железные жупи',
+  'Антигравитатор',
+]);
 
-console.log(
-  findBestEmployee({
-    poly: 12,
-    mango: 17,
-    ajax: 4,
-  }),
-); // mango
+const items = storage.getItems();
+console.table(items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор" ]
 
-console.log(
-  findBestEmployee({
-    lux: 147,
-    david: 21,
-    kiwi: 19,
-    chelsy: 38,
-  }),
-); // lux
+storage.addItem('Дроид');
+console.table(storage.items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор", "Дроид" ]
+
+storage.removeItem('Пролонгер');
+console.table(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]
