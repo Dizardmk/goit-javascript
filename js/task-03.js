@@ -13,8 +13,10 @@ class Storage {
     this.items.push(item);
   }
   removeItem(item) {
-    const index = items.indexOf(item);
-    items.splice(index, 1);
+    if (this.items.includes(item)) {
+      const index = items.indexOf(item);
+      items.splice(index, 1);
+    }
   }
 }
 
@@ -32,4 +34,6 @@ storage.addItem('Дроид');
 console.table(storage.items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор", "Дроид" ]
 
 storage.removeItem('Пролонгер');
+// storage.removeItem('Лазер');
+// storage.removeItem('Нанитоиды');
 console.table(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]
