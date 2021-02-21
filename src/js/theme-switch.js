@@ -8,7 +8,6 @@ const refs = {
   themeToggle: document.querySelector('#theme-switch-toggle'),
 };
 
-refs.body.classList.add(Theme.LIGHT);
 if (localStorage.getItem('dark-theme')) {
   refs.themeToggle.checked = true;
   refs.body.classList.add(Theme.DARK);
