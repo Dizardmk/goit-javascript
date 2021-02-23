@@ -15,13 +15,12 @@ if (localStorage.getItem('dark-theme')) {
   refs.themeToggle.checked = true;
 }
 
-refs.themeToggle.addEventListener('change', event => onThemeSwitcher());
+refs.themeToggle.addEventListener('change', onThemeSwitcher);
 
 function onThemeSwitcher() {
   if (event.target.checked) {
     if (refs.body.classList.contains(Theme.LIGHT)) {
       refs.body.classList.remove(Theme.LIGHT);
-      localStorage.removeItem('light-theme');
       localStorage.setItem('dark-theme', Theme.DARK);
     }
     return refs.body.classList.add(Theme.DARK);
@@ -29,7 +28,6 @@ function onThemeSwitcher() {
   if (refs.body.classList.contains(Theme.DARK)) {
     refs.body.classList.remove(Theme.DARK);
     localStorage.removeItem('dark-theme');
-    localStorage.setItem('light-theme', Theme.LIGHT);
   }
   return refs.body.classList.add(Theme.LIGHT);
 }
