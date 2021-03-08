@@ -1,38 +1,39 @@
-const colors = [
-  '#FFFFFF',
-  '#2196F3',
-  '#4CAF50',
-  '#FF9800',
-  '#009688',
-  '#795548',
-];
-const randomIntegerFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-const refs = {
-  body: document.querySelector('body'),
-  start: document.querySelector('button[data-action="start"]'),
-  stop: document.querySelector('button[data-action="stop"]'),
-};
-let intervalId = null;
+class CountdownTimer {
+  constructor({ selector, targetDate }) {
+    this.selector = selector;
+    this.targetDate = targetDate;
+    this.timerRef = document.querySelector(selector);
+    this.daysRef = this.timerRef.querySelector('span[data-value="days"]');
+    this.hoursRef = this.timerRef.querySelector('span[data-value="hours"]');
+    this.minsRef = this.timerRef.querySelector('span[data-value="mins"]');
+    this.secsRef = this.timerRef.querySelector('span[data-value="secs"]');
 
-refs.start.addEventListener('click', onClickStart);
-refs.stop.addEventListener('click', onClickStop);
+    let timerId = setInterval(() => {
+      const time = this.targetDate - new Date();
+      const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+      const hours = pad(
+        Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      );
+      const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+      const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
 
-function onClickStart() {
-  refs.start.disabled = true;
-  createInterval();
-}
-function onClickStop() {
-  refs.start.disabled = false;
-  removeInterval();
+      this.daysRef.textContent = `${days}`;
+      this.hoursRef.textContent = `${hours}`;
+      this.minsRef.textContent = `${mins}`;
+      this.secsRef.textContent = `${secs}`;
+
+      if (time < 1) {
+        clearInterval(timerId);
+      }
+
+      function pad(value) {
+        return String(value).padStart(2, '0');
+      }
+    }, 1000);
+  }
 }
 
-function createInterval() {
-  intervalId = setInterval(function () {
-    refs.body.style = `background: ${colors[randomIntegerFromInterval(0, 5)]}`;
-  }, 1000);
-}
-function removeInterval() {
-  clearInterval(intervalId);
-}
+new CountdownTimer({
+  selector: '#timer-1',
+  targetDate: new Date('Jul 17, 2021'),
+});
