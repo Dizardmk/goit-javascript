@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+button {
+  height: 100px;
+  width: 100px;
+}
+[data-action='start'] {
+  color: green;
+}
+[data-action='stop'] {
+  color: red;
+}
