@@ -8,23 +8,28 @@ import pNotify from './js/pNotify';
 
 refs.input.addEventListener('input', debounce(onInput, 500));
 
-function onInput(event) {
+async function onInput(event) {
   if (event.target.value === '') {
     return;
   }
   if (event.target.value === ' ') {
-    return pNotify.nullResult();
+    return pNotify.emptyResult();
   }
-  API.fetchCountries(event.target.value).then(searchCountryResult);
+  try {
+    const countries = await API.fetchCountries(event.target.value);
+    searchCountryResult(countries);
+  } catch {
+    return pNotify.errorResult();
+  }
 }
 
 function searchCountryResult(result) {
   clearContent();
   if (result.status === 404) {
-    pNotify.errorResult();
+    pNotify.failureResult();
   }
   if (result.length > 10) {
-    pNotify.manyResult();
+    return pNotify.manyResults();
   }
   if (result.length >= 2 && result.length <= 10) {
     refs.content.innerHTML = countriesTemplate(result);

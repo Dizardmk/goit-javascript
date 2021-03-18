@@ -1,9 +1,8 @@
 import apiSetting from './apiSettings';
 
 export default {
-  fetchCountries(searchQuery) {
-    return fetch(`${apiSetting.BASE_URL}/${searchQuery}`).then(response =>
-      response.json(),
-    );
+  async fetchCountries(searchQuery) {
+    const response = await fetch(`${apiSetting.BASE_URL}/${searchQuery}`);
+    return await response.json();
   },
 };
