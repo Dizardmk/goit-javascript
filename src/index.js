@@ -5,11 +5,11 @@ import galleryTemplate from './templates/gallery.hbs';
 import debounce from 'lodash.debounce';
 import pNotify from './js/pNotify';
 
-refs.button.setAttribute('hidden', '');
+refs.button.setAttribute('hidden', ''); // скрываем кнопку load more
 refs.searchForm.addEventListener('input', debounce(onSearch, 500));
+refs.searchForm.addEventListener('click', onButtonClick);
 
 function onSearch(event) {
-  event.preventDefault();
   if (event.target.value === '') {
     return;
   }
@@ -20,15 +20,23 @@ function onSearch(event) {
 }
 
 function searchImageResult(result) {
-  clearGallery();
-  if (refs.button.hidden) {
-    refs.button.removeAttribute('hidden');
-  }
   if (result.hits.length === 0) {
     return pNotify.failureResult();
   }
+  refs.button.setAttribute('hidden', ''); // скрываем кнопку load more
+  if (refs.button.hidden && result.total > 12) {
+    refs.button.removeAttribute('hidden');
+    // если кнопка скрыта и результатов больше 12, то показываем ее
+  }
+  clearGallery();
   refs.gallery.innerHTML = galleryTemplate(result.hits);
   console.log(result);
+}
+
+function onButtonClick(event) {
+  if (event.target.nodeName === 'BUTTON') {
+    console.log('YAY');
+  }
 }
 
 function clearGallery() {
