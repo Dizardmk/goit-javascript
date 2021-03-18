@@ -1,8 +1,83 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css';
+@import 'material-design-icons/iconfont/material-icons.css';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
 body {
   background-image: url('../images/bg-pattern.png');
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   color: #505050;
-  font-size: 20px;
+  font-style: normal;
+}
+input {
+  height: 50px;
+  width: 200px;
+  padding: 0 10px;
+  margin: 20px 0;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+input:focus {
+  outline-color: #007bff;
+}
+img {
+  display: block;
+}
+button {
+  height: 50px;
+  width: 200px;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 0 20px;
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.photo-card {
+  display: block;
+}
+.photo-card:nth-child(odd) {
+  margin-right: 20px;
+}
+.img-wrapper {
+  height: 426px;
+  width: 640px;
+}
+.stats {
+  margin: 10px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stats-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stats-item:not(:last-child) {
+  margin-right: 20px;
+}
+.material-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
 }

@@ -1,4 +1,5 @@
 export default {
-  input: document.querySelector('.js-input'),
-  content: document.querySelector('.js-content'),
+  searchForm: document.querySelector('.search-form'),
+  gallery: document.querySelector('.gallery'),
+  button: document.querySelector('button'),
 };
