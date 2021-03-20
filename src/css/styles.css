@@ -16,10 +16,12 @@ body {
   font-style: normal;
 }
 input {
+  position: fixed;
+  top: 0;
   height: 50px;
   width: 200px;
   padding: 0 10px;
-  margin: 20px 0;
+  margin-top: 20px;
   border: 1px solid grey;
   border-radius: 5px;
 }
@@ -28,6 +30,9 @@ input:focus {
 }
 img {
   display: block;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 button {
   height: 50px;
@@ -56,6 +61,9 @@ button {
 }
 .photo-card:nth-child(odd) {
   margin-right: 20px;
+}
+.photo-card:nth-child(-n + 2) {
+  margin-top: 100px;
 }
 .img-wrapper {
   height: 426px;
