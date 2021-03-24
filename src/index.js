@@ -12,10 +12,6 @@ refs.searchForm.addEventListener('input', debounce(onSearch, 500));
 refs.searchForm.addEventListener('click', onLoadMore);
 
 async function onSearch(event) {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
   if (event.target.value === '') {
     return;
   }
@@ -59,7 +55,7 @@ function clearGallery() {
 }
 
 function scrollToNewElements() {
-  const totalScrollHeight = refs.gallery.clientHeight + 80;
+  const totalScrollHeight = refs.gallery.clientHeight;
   setTimeout(() => {
     window.scrollTo({
       top: totalScrollHeight,
